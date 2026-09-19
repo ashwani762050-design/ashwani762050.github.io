@@ -1,352 +1,1375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ashwani Patel | Portfolio</title>
+<title>Ashwani Patel | AI/ML & Tech Portfolio</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+<meta name="description"
+content="Ashwani Patel - BSc Computer Science student, Desktop Support, Data Analysis, Data Science and AI/ML Enthusiast.">
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b1120;
-            color: white;
-            line-height: 1.6;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: #111827;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        nav h2 {
-            color: #38bdf8;
-        }
+<style>
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-        }
+:root{
+    --bg:#05070d;
+    --bg2:#080c16;
+    --card:rgba(12,18,31,.72);
+    --line:rgba(0,255,170,.18);
+    --green:#00ffae;
+    --cyan:#00eaff;
+    --purple:#8b5cf6;
+    --pink:#ff3cac;
+    --text:#f4f7fb;
+    --muted:#8994a8;
+}
 
-        nav a:hover {
-            color: #38bdf8;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-        section {
-            padding: 80px 8%;
-        }
+body{
+    background:
+        radial-gradient(circle at 15% 10%,rgba(0,255,174,.08),transparent 25%),
+        radial-gradient(circle at 85% 25%,rgba(139,92,246,.12),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    font-family:Inter,sans-serif;
+    overflow-x:hidden;
+}
 
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+/* MATRIX GRID */
 
-        .hero h1 {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.14;
+    background-image:
+        linear-gradient(rgba(0,255,174,.12) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(0,255,174,.12) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent 85%);
+    z-index:-2;
+}
 
-        .hero h1 span {
-            color: #38bdf8;
-        }
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(0,255,174,.06);
+    filter:blur(120px);
+    border-radius:50%;
+    top:20%;
+    left:40%;
+    pointer-events:none;
+    z-index:-3;
+}
 
-        .hero p {
-            font-size: 20px;
-            color: #cbd5e1;
-            margin-bottom: 30px;
-        }
+/* SCROLLBAR */
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #38bdf8;
-            color: #0b1120;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-        }
+::-webkit-scrollbar{
+    width:7px;
+}
 
-        h2 {
-            font-size: 35px;
-            margin-bottom: 30px;
-            color: #38bdf8;
-        }
+::-webkit-scrollbar-track{
+    background:#05070d;
+}
 
-        .about p {
-            max-width: 800px;
-            color: #cbd5e1;
-            font-size: 18px;
-        }
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--green),var(--purple));
+    border-radius:20px;
+}
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
+/* NAVBAR */
 
-        .skill {
-            background: #111827;
-            padding: 25px;
-            text-align: center;
-            border-radius: 12px;
-            border: 1px solid #1e293b;
-        }
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    background:rgba(5,7,13,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+    z-index:1000;
+}
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
+.logo{
+    font-family:"Fira Code",monospace;
+    font-size:22px;
+    color:var(--green);
+    font-weight:700;
+}
 
-        .project {
-            background: #111827;
-            padding: 25px;
-            border-radius: 12px;
-        }
+.logo span{
+    color:white;
+}
 
-        .project h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
-        }
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
 
-        .project p {
-            color: #cbd5e1;
-        }
+.nav-links a{
+    color:#aeb8c9;
+    text-decoration:none;
+    font-family:"Fira Code",monospace;
+    font-size:13px;
+    transition:.3s;
+}
 
-        .education {
-            background: #111827;
-            padding: 25px;
-            border-radius: 12px;
-            max-width: 700px;
-        }
+.nav-links a:hover{
+    color:var(--green);
+    text-shadow:0 0 15px var(--green);
+}
 
-        .contact a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
+/* HERO */
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #111827;
-            color: #94a3b8;
-        }
+.hero{
+    min-height:100vh;
+    padding:140px 7% 80px;
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    align-items:center;
+    gap:60px;
+}
 
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
+.terminal-label{
+    color:var(--green);
+    font-family:"Fira Code",monospace;
+    font-size:14px;
+    margin-bottom:25px;
+}
 
-            nav a {
-                margin: 8px;
-            }
+.terminal-label::before{
+    content:"root@ashwani:~$ ";
+    color:#687386;
+}
 
-            .hero h1 {
-                font-size: 40px;
-            }
-        }
-    </style>
+.hero h1{
+    font-size:clamp(48px,7vw,92px);
+    line-height:.95;
+    letter-spacing:-4px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,var(--green),var(--cyan),var(--purple));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.typing{
+    font-family:"Fira Code",monospace;
+    color:#aab4c4;
+    font-size:20px;
+    min-height:35px;
+}
+
+.cursor{
+    color:var(--green);
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+.hero-description{
+    max-width:650px;
+    color:#7f8a9d;
+    line-height:1.8;
+    margin:25px 0;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 21px;
+    border-radius:7px;
+    text-decoration:none;
+    font-family:"Fira Code",monospace;
+    font-size:13px;
+    transition:.3s;
+    border:1px solid var(--line);
+}
+
+.btn-primary{
+    background:var(--green);
+    color:#00150e;
+    box-shadow:0 0 25px rgba(0,255,174,.2);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 35px rgba(0,255,174,.45);
+}
+
+.btn-outline{
+    color:var(--green);
+    background:rgba(0,255,174,.03);
+}
+
+.btn-outline:hover{
+    background:rgba(0,255,174,.1);
+}
+
+/* PROFILE TERMINAL */
+
+.profile-terminal{
+    background:rgba(7,11,20,.82);
+    border:1px solid rgba(0,255,174,.22);
+    border-radius:14px;
+    box-shadow:
+        0 0 50px rgba(0,255,174,.08),
+        inset 0 0 50px rgba(0,255,174,.025);
+    overflow:hidden;
+    transform:rotate(1deg);
+    transition:.5s;
+}
+
+.profile-terminal:hover{
+    transform:rotate(0deg) translateY(-8px);
+    box-shadow:0 0 70px rgba(0,255,174,.15);
+}
+
+.terminal-top{
+    height:42px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:0 15px;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#555;
+}
+
+.terminal-title{
+    margin-left:8px;
+    font-family:"Fira Code",monospace;
+    color:#667085;
+    font-size:11px;
+}
+
+.profile-content{
+    padding:30px;
+    text-align:center;
+}
+
+.profile-ring{
+    width:220px;
+    height:220px;
+    margin:auto;
+    padding:5px;
+    border-radius:50%;
+    background:conic-gradient(
+        var(--green),
+        var(--cyan),
+        var(--purple),
+        var(--pink),
+        var(--green)
+    );
+    animation:spin 8s linear infinite;
+}
+
+.profile-ring img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #080c15;
+    animation:spinReverse 8s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+@keyframes spinReverse{
+    to{transform:rotate(-360deg)}
+}
+
+.profile-code{
+    margin-top:25px;
+    font-family:"Fira Code",monospace;
+    text-align:left;
+    font-size:12px;
+    line-height:2;
+    color:#8290a5;
+}
+
+.profile-code .key{
+    color:var(--purple);
+}
+
+.profile-code .value{
+    color:var(--green);
+}
+
+/* SECTION */
+
+section{
+    padding:100px 7%;
+}
+
+.section-heading{
+    margin-bottom:55px;
+}
+
+.section-number{
+    color:var(--green);
+    font-family:"Fira Code",monospace;
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+.section-heading h2{
+    font-size:42px;
+    letter-spacing:-2px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    margin-top:12px;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.code-card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:12px;
+    padding:30px;
+    backdrop-filter:blur(15px);
+    transition:.35s;
+}
+
+.code-card:hover{
+    border-color:rgba(0,255,174,.3);
+    transform:translateY(-5px);
+}
+
+.code-card h3{
+    font-family:"Fira Code",monospace;
+    color:var(--green);
+    font-size:17px;
+    margin-bottom:20px;
+}
+
+.code-card p{
+    color:#8893a7;
+    line-height:1.8;
+}
+
+/* SKILLS */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.skill{
+    font-family:"Fira Code",monospace;
+    font-size:13px;
+    padding:12px 17px;
+    border:1px solid rgba(0,255,174,.16);
+    border-radius:6px;
+    color:#aeb9c9;
+    background:rgba(0,255,174,.025);
+    transition:.3s;
+}
+
+.skill::before{
+    content:"▹ ";
+    color:var(--green);
+}
+
+.skill:hover{
+    color:var(--green);
+    border-color:var(--green);
+    box-shadow:0 0 20px rgba(0,255,174,.12);
+    transform:translateY(-3px);
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+}
+
+.project{
+    position:relative;
+    padding:28px;
+    min-height:250px;
+    border:1px solid rgba(255,255,255,.07);
+    background:linear-gradient(
+        145deg,
+        rgba(15,23,40,.8),
+        rgba(6,10,18,.8)
+    );
+    border-radius:12px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.project::before{
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:var(--green);
+    opacity:.05;
+    filter:blur(60px);
+    right:-50px;
+    top:-50px;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:rgba(0,255,174,.35);
+}
+
+.project-number{
+    font-family:"Fira Code",monospace;
+    color:#4e5a6c;
+    font-size:12px;
+}
+
+.project h3{
+    margin:25px 0 12px;
+    font-size:22px;
+}
+
+.project p{
+    color:#7e899d;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.project-tech{
+    margin-top:25px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.project-tech span{
+    font-family:"Fira Code",monospace;
+    font-size:10px;
+    color:var(--green);
+    background:rgba(0,255,174,.06);
+    padding:7px 9px;
+    border-radius:4px;
+}
+
+/* EDUCATION */
+
+.timeline{
+    border-left:1px solid rgba(0,255,174,.25);
+    padding-left:30px;
+}
+
+.timeline-item{
+    position:relative;
+    padding:25px;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:10px;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-37px;
+    top:30px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 20px var(--green);
+}
+
+.timeline-item .year{
+    font-family:"Fira Code",monospace;
+    color:var(--green);
+    font-size:12px;
+}
+
+.timeline-item h3{
+    margin:12px 0 8px;
+}
+
+.timeline-item p{
+    color:#818c9f;
+    line-height:1.7;
+}
+
+/* CERTIFICATES */
+
+.certificates{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.certificate{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.07);
+    padding:25px;
+    border-radius:12px;
+    transition:.4s;
+}
+
+.certificate:hover{
+    transform:translateY(-7px);
+    border-color:rgba(139,92,246,.4);
+    box-shadow:0 0 30px rgba(139,92,246,.08);
+}
+
+.cert-icon{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.certificate h3{
+    font-size:17px;
+    line-height:1.4;
+    margin-bottom:10px;
+}
+
+.certificate p{
+    color:#7f8a9d;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.cert-button{
+    display:inline-block;
+    margin-top:20px;
+    color:var(--green);
+    font-family:"Fira Code",monospace;
+    font-size:11px;
+    text-decoration:none;
+}
+
+.cert-button:hover{
+    text-decoration:underline;
+}
+
+/* CONTACT */
+
+.contact-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.contact-card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.07);
+    padding:30px;
+    border-radius:12px;
+}
+
+.contact-line{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin:20px 0;
+    color:#9aa5b8;
+}
+
+.contact-line strong{
+    color:var(--green);
+    font-family:"Fira Code",monospace;
+    font-size:12px;
+}
+
+.contact-line a{
+    color:#d4dae4;
+    text-decoration:none;
+}
+
+.contact-line a:hover{
+    color:var(--green);
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 7%;
+    border-top:1px solid rgba(255,255,255,.06);
+    text-align:center;
+    color:#586477;
+    font-family:"Fira Code",monospace;
+    font-size:11px;
+}
+
+footer span{
+    color:var(--green);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        padding-top:120px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .about-grid,
+    .contact-box{
+        grid-template-columns:1fr;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .certificates{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:75px 5%;
+    }
+
+    nav{
+        padding:0 5%;
+    }
+
+    .hero{
+        padding-left:5%;
+        padding-right:5%;
+    }
+
+    .profile-ring{
+        width:180px;
+        height:180px;
+    }
+
+    .section-heading h2{
+        font-size:32px;
+    }
+
+    .certificates{
+        grid-template-columns:1fr;
+    }
+
+    .buttons{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <h2>Ashwani Patel</h2>
+<!-- NAVIGATION -->
 
-        <div>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
+<nav>
+
+    <div class="logo">
+        &lt;<span>Ashwani</span>/&gt;
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#about">01.about</a></li>
+        <li><a href="#skills">02.skills</a></li>
+        <li><a href="#projects">03.projects</a></li>
+        <li><a href="#certificates">04.certs</a></li>
+        <li><a href="#contact">05.contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div>
+
+        <div class="terminal-label">
+            portfolio.init()
         </div>
-    </nav>
 
+        <h1>
+            Ashwani<br>
+            <span>Patel.</span>
+        </h1>
 
-    <!-- Hero Section -->
-    <section class="hero">
-
-        <div>
-            <h1>Hello, I'm <span>Ashwani Patel</span></h1>
-
-            <p>
-                BSc CS Student | Desktop Support Engineer |
-                Data Analyst | Data Science | AI/ML Enthusiast
-            </p>
-
-            <a href="#projects" class="btn">
-                View My Projects
-            </a>
+        <div class="typing">
+            <span id="typingText"></span><span class="cursor">|</span>
         </div>
 
-    </section>
-
-
-    <!-- About -->
-    <section id="about" class="about">
-
-        <h2>About Me</h2>
-
-        <p>
-            I am a BSc Computer Science student interested in
-            technology, programming, data analysis, data science,
-            artificial intelligence and machine learning.
-            I am also developing my skills in desktop support,
-            Python and problem solving.
+        <p class="hero-description">
+            BSc Computer Science student building skills across
+            Desktop Support, Data Analysis, Data Science and AI/ML.
+            Exploring technology, solving problems and creating things
+            with code.
         </p>
 
-    </section>
+        <div class="buttons">
 
+            <a href="#projects" class="btn btn-primary">
+                ./view_projects
+            </a>
 
-    <!-- Skills -->
-    <section id="skills">
+            <a href="https://github.com/ashwani762050-design"
+               target="_blank"
+               class="btn btn-outline">
+                GitHub ↗
+            </a>
 
-        <h2>My Skills</h2>
-
-        <div class="skills">
-
-            <div class="skill">Python</div>
-
-            <div class="skill">Data Analysis</div>
-
-            <div class="skill">Data Analytics</div>
-
-            <div class="skill">Data Science</div>
-
-            <div class="skill">AI / ML</div>
-
-            <div class="skill">Desktop Support</div>
-
-            <div class="skill">C++</div>
-
-            <div class="skill">DSA</div>
-
-            <div class="skill">Git & GitHub</div>
+            <a href="https://www.linkedin.com/in/ashwani-patel-2059613a2"
+               target="_blank"
+               class="btn btn-outline">
+                LinkedIn ↗
+            </a>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- Projects -->
-    <section id="projects">
+    <!-- TERMINAL PROFILE -->
 
-        <h2>My Projects</h2>
+    <div class="profile-terminal">
 
-        <div class="projects">
+        <div class="terminal-top">
 
-            <div class="project">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
 
-                <h3>Data Analysis Project</h3>
-
-                <p>
-                    A Python-based project for analysing,
-                    cleaning and understanding datasets.
-                </p>
-
-            </div>
-
-
-            <div class="project">
-
-                <h3>Python Project</h3>
-
-                <p>
-                    A Python project demonstrating programming,
-                    logic building and problem solving.
-                </p>
-
-            </div>
-
-
-            <div class="project">
-
-                <h3>AI / ML Project</h3>
-
-                <p>
-                    Machine learning project demonstrating
-                    data preparation, model training and prediction.
-                </p>
-
+            <div class="terminal-title">
+                ashwin@portfolio — profile.json
             </div>
 
         </div>
 
-    </section>
+        <div class="profile-content">
+
+            <div class="profile-ring">
+                <img src="myimage.jpeg" alt="Ashwani Patel">
+            </div>
+
+            <div class="profile-code">
+
+                <div>
+                    <span class="key">const</span>
+                    developer = {
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;name:
+                    <span class="value">"Ashwani Patel"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;role:
+                    <span class="value">"CS Student"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;focus:
+                    <span class="value">"AI / ML"</span>,
+                </div>
+
+                <div>
+                    &nbsp;&nbsp;status:
+                    <span class="value">"Learning..."</span>
+                </div>
+
+                <div>};</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- Education -->
-    <section id="education">
+<!-- ABOUT -->
 
-        <h2>Education</h2>
+<section id="about">
 
-        <div class="education">
+    <div class="section-heading">
 
-            <h3>BSc Computer Science</h3>
+        <div class="section-number">
+            // 01 — ABOUT
+        </div>
+
+        <h2>Who am I?</h2>
+
+        <p>
+            A student. A learner. A builder.
+        </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+        <div class="code-card">
+
+            <h3>01. developer_profile()</h3>
 
             <p>
-                Shri Mahadev Baburao Chaughule College
-            </p>
-
-            <p>
-                2025 - 2028
+                I am Ashwani Patel, a BSc Computer Science student
+                interested in technology, programming and problem solving.
+                My current learning path includes Desktop Support,
+                Data Analysis, Data Science and Artificial Intelligence.
             </p>
 
         </div>
 
-    </section>
+
+        <div class="code-card">
+
+            <h3>02. current_mission()</h3>
+
+            <p>
+                Learn continuously, build practical projects,
+                understand how systems work and develop strong
+                technical foundations for the future.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
+<!-- SKILLS -->
 
-        <h2>Contact Me</h2>
+<section id="skills">
+
+    <div class="section-heading">
+
+        <div class="section-number">
+            // 02 — SKILLS
+        </div>
+
+        <h2>Tech Stack</h2>
 
         <p>
-            GitHub:
-            <a href="https://github.com/ashwani762050-design">
-                github.com/ashwani762050-design
+            Tools and technologies I am learning and working with.
+        </p>
+
+    </div>
+
+
+    <div class="skills">
+
+        <div class="skill">Python</div>
+        <div class="skill">Pandas</div>
+        <div class="skill">Data Analysis</div>
+        <div class="skill">Data Science</div>
+        <div class="skill">AI / ML</div>
+        <div class="skill">Desktop Support</div>
+        <div class="skill">Windows</div>
+        <div class="skill">Networking</div>
+        <div class="skill">Git</div>
+        <div class="skill">GitHub</div>
+        <div class="skill">C++ / DSA</div>
+        <div class="skill">Problem Solving</div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="section-heading">
+
+        <div class="section-number">
+            // 03 — PROJECTS
+        </div>
+
+        <h2>Things I've Built</h2>
+
+        <p>
+            Turning learning into practical work.
+        </p>
+
+    </div>
+
+
+    <div class="projects">
+
+
+        <div class="project">
+
+            <div class="project-number">
+                PROJECT_001
+            </div>
+
+            <h3>Personal Portfolio</h3>
+
+            <p>
+                A futuristic developer portfolio designed with
+                HTML and CSS and deployed using GitHub Pages.
+            </p>
+
+            <div class="project-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>GitHub Pages</span>
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-number">
+                PROJECT_002
+            </div>
+
+            <h3>Data Analysis</h3>
+
+            <p>
+                Learning to clean, filter, transform and analyze
+                datasets using Python and Pandas.
+            </p>
+
+            <div class="project-tech">
+                <span>Python</span>
+                <span>Pandas</span>
+                <span>Data</span>
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-number">
+                PROJECT_003
+            </div>
+
+            <h3>AI / ML Lab</h3>
+
+            <p>
+                Exploring machine learning concepts and developing
+                a foundation for future AI/ML projects.
+            </p>
+
+            <div class="project-tech">
+                <span>Python</span>
+                <span>AI</span>
+                <span>ML</span>
+            </div>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-number">
+                PROJECT_004
+            </div>
+
+            <h3>Desktop Support Lab</h3>
+
+            <p>
+                Practicing computer hardware, Windows troubleshooting,
+                BIOS, networking and desktop support concepts.
+            </p>
+
+            <div class="project-tech">
+                <span>Windows</span>
+                <span>Hardware</span>
+                <span>Networking</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+    <div class="section-heading">
+
+        <div class="section-number">
+            // 04 — EDUCATION
+        </div>
+
+        <h2>Learning Journey</h2>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="year">
+                CURRENT
+            </div>
+
+            <h3>BSc Computer Science — Second Year</h3>
+
+            <p>
+                Shri Mahadev Baburav Chaughule College, Bhiwandi.
+                Current focus includes programming, data,
+                AI/ML, networking and IT support.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CERTIFICATES -->
+
+<section id="certificates">
+
+    <div class="section-heading">
+
+        <div class="section-number">
+            // 05 — CERTIFICATES
+        </div>
+
+        <h2>Certifications</h2>
+
+        <p>
+            Learning milestones and completed courses.
+        </p>
+
+    </div>
+
+
+    <div class="certificates">
+
+
+        <div class="certificate">
+
+            <div class="cert-icon">◈</div>
+
+            <h3>AI for Beginners</h3>
+
+            <p>
+                HP LIFE<br>
+                Certificate of Completion<br>
+                Presented: August 26, 2026
+            </p>
+
+            <a href="certificate-ai-for-beginners.pdf"
+               target="_blank"
+               class="cert-button">
+                [ VIEW_CERTIFICATE ]
             </a>
-        </p>
 
-        <br>
+        </div>
 
-        <p>
-            LinkedIn:
-            <a href="#">
-                Add your LinkedIn profile
+
+        <div class="certificate">
+
+            <div class="cert-icon">◉</div>
+
+            <h3>Strategic Planning in the AI Age</h3>
+
+            <p>
+                HP LIFE<br>
+                Certificate of Completion<br>
+                Presented: August 26, 2026
+            </p>
+
+            <a href="certificate-strategic-planning-ai.pdf"
+               target="_blank"
+               class="cert-button">
+                [ VIEW_CERTIFICATE ]
             </a>
-        </p>
 
-    </section>
+        </div>
 
 
-    <footer>
+        <div class="certificate">
+
+            <div class="cert-icon">⌘</div>
+
+            <h3>Basics of Python</h3>
+
+            <p>
+                Certificate of Completion<br>
+                Awarded: February 2, 2026
+            </p>
+
+            <a href="certificate-basics-python.pdf"
+               target="_blank"
+               class="cert-button">
+                [ VIEW_CERTIFICATE ]
+            </a>
+
+        </div>
+
+
+        <div class="certificate">
+
+            <div class="cert-icon">▣</div>
+
+            <h3>Practice Exam — CompTIA Tech+</h3>
+
+            <p>
+                LinkedIn Learning<br>
+                Practice Exam 1 — FC0-U71<br>
+                Completed: August 23, 2026
+            </p>
+
+            <a href="certificate-comptia-tech-plus.pdf"
+               target="_blank"
+               class="cert-button">
+                [ VIEW_CERTIFICATE ]
+            </a>
+
+        </div>
+
+
+        <div class="certificate">
+
+            <div class="cert-icon">◇</div>
+
+            <h3>Agile Analysis Certification</h3>
+
+            <p>
+                LinkedIn Learning<br>
+                Practice Exam — IIBA®-AAC<br>
+                Completed: August 23, 2026
+            </p>
+
+            <a href="certificate-agile-analysis.pdf"
+               target="_blank"
+               class="cert-button">
+                [ VIEW_CERTIFICATE ]
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="section-heading">
+
+        <div class="section-number">
+            // 06 — CONTACT
+        </div>
+
+        <h2>Let's Connect</h2>
 
         <p>
-            © 2026 Ashwani Patel | Portfolio
+            Have an idea, opportunity or technical discussion?
         </p>
 
-    </footer>
+    </div>
+
+
+    <div class="contact-box">
+
+
+        <div class="contact-card">
+
+            <div class="contact-line">
+                <strong>PHONE</strong>
+                <a href="tel:+919730722579">
+                    +91 97307 22579
+                </a>
+            </div>
+
+
+            <div class="contact-line">
+                <strong>LINKEDIN</strong>
+                <a href="https://www.linkedin.com/in/ashwani-patel-2059613a2"
+                   target="_blank">
+                    ash wani-patel ↗
+                </a>
+            </div>
+
+
+            <div class="contact-line">
+                <strong>GITHUB</strong>
+                <a href="https://github.com/ashwani762050-design"
+                   target="_blank">
+                    ash wani762050-design ↗
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <h3 style="font-family:'Fira Code';color:#00ffae;margin-bottom:18px;">
+                terminal.message()
+            </h3>
+
+            <p style="color:#7f8a9d;line-height:1.8;">
+                Building my skills one project at a time.
+                <br><br>
+                <span style="color:#00ffae;">
+                    $ keep_learning --mode=future
+                </span>
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        <span>©</span> 2026 Ashwani Patel
+        <br><br>
+        Built with &lt;code/&gt; • curiosity • caffeine
+    </p>
+
+</footer>
+
+
+<!-- TYPING EFFECT -->
+
+<script>
+
+const texts = [
+    "Desktop Support Engineer",
+    "Data Analyst",
+    "Data Science Enthusiast",
+    "AI / ML Enthusiast",
+    "Computer Science Student",
+    "Tech Explorer"
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typingText = document.getElementById("typingText");
+
+function typeEffect(){
+
+    const currentText = texts[textIndex];
+
+    if(!deleting){
+
+        typingText.textContent =
+            currentText.substring(0,charIndex + 1);
+
+        charIndex++;
+
+        if(charIndex === currentText.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1400);
+            return;
+        }
+
+    }else{
+
+        typingText.textContent =
+            currentText.substring(0,charIndex - 1);
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            textIndex++;
+
+            if(textIndex >= texts.length){
+                textIndex = 0;
+            }
+
+        }
+
+    }
+
+    setTimeout(
+        typeEffect,
+        deleting ? 45 : 85
+    );
+}
+
+typeEffect();
+
+</script>
 
 </body>
 </html>
